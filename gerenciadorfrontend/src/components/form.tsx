@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import Label from "@/components/ui/label";
 import Input from "@/components/ui/input";
 import { atualizarTarefa, criarTarefa, deletarTarefa } from "@/actions/ApiActions";
@@ -51,15 +51,15 @@ export function FormCriar() {
             <form onSubmit={onSubmit}>
                 <div className="formItem">
                     <Label htmlFor="titulo">Titulo</Label>
-                    <Input className="inputBox" required value={titulo} onChange={(e) => { setTitulo(e.target.value) }} id="titulo" type="text"/>
+                    <Input className="inputBox" required value={titulo} onChange={(e : ChangeEvent<HTMLInputElement>) => { setTitulo(e.target.value) }} id="titulo" type="text"/>
                 </div>
                 <div className="formItem">
                     <Label htmlFor="descricao">Descrição</Label>
-                    <Input className="inputBox" required value={descricao} onChange={(e) => { setDescricao(e.target.value) }} id="descricao" type="text"/>
+                    <Input className="inputBox" required value={descricao} onChange={(e : ChangeEvent<HTMLInputElement>) => { setDescricao(e.target.value) }} id="descricao" type="text"/>
                 </div>
                 <div className="formItem">
                     <Label htmlFor="status">Status</Label>
-                    <Combobox className="inputBox" value={status} onChange={(e) => { setStatus(e.target.value) }}>
+                    <Combobox className="inputBox" value={status} onChange={(e : ChangeEvent<HTMLSelectElement>) => { setStatus(Number.parseInt(e.target.value)) }}>
                         <ComboboxOption key={0} value={0} stringExib="Selecione..."/>
 
                         {
@@ -150,15 +150,15 @@ export function FormAlterar({ value } : Readonly<{ value: string }>) {
             <form onSubmit={onSubmit}>
                 <div className="formItem">
                     <Label htmlFor="titulo">Titulo</Label>
-                    <Input className="inputBox" required value={titulo} onChange={(e) => { setTitulo(e.target.value) }} id="titulo" type="text"/>
+                    <Input className="inputBox" required value={titulo} onChange={(e : ChangeEvent<HTMLInputElement>) => { setTitulo(e.target.value) }} id="titulo" type="text"/>
                 </div>
                 <div className="formItem">
                     <Label htmlFor="descricao">Descrição</Label>
-                    <Input className="inputBox" required value={descricao} onChange={(e) => { setDescricao(e.target.value) }} id="descricao" type="text"/>
+                    <Input className="inputBox" required value={descricao} onChange={(e : ChangeEvent<HTMLInputElement>) => { setDescricao(e.target.value) }} id="descricao" type="text"/>
                 </div>
                 <div className="formItem">
                     <Label htmlFor="status">Status</Label>
-                    <Combobox className="inputBox" value={status} onChange={(e) => { setStatus(e.target.value) }}>
+                    <Combobox className="inputBox" value={status} onChange={(e : ChangeEvent<HTMLSelectElement>) => { setStatus(Number.parseInt(e.target.value)) }}>
                         <ComboboxOption key={0} value={0} stringExib="Selecione..."/>
 
                         {
