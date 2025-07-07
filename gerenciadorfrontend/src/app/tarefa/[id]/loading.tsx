@@ -1,7 +1,9 @@
 export default async function PageLoading() {
     return (
-        <div>
-            Carregando...
+        <div className="main">
+            <div>
+                Carregando...
+            </div>
         </div>
     );
 }

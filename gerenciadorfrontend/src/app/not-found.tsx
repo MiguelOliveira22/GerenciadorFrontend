@@ -1,5 +1,10 @@
+import Link from "next/link";
+
 export default function PageNotFound() {
     return (
-        <div>Não Foi Possível Recuperar As Tarefas. Tente Novamente Mais Tarde!</div>
+        <div className="main">
+            <h3>Essa Pagina Não Existe :(</h3>
+            <Link href="/" className="anchorButton">Voltar Ao Início</Link>
+        </div>
     );
 }

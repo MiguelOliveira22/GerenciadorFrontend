@@ -4,7 +4,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import Label from "@/components/ui/label";
 import Input from "@/components/ui/input";
 import { atualizarTarefa, criarTarefa, deletarTarefa } from "@/actions/ApiActions";
-import { useRouter } from "next/navigation";
+import { notFound, useRouter } from "next/navigation";
 import { Combobox, ComboboxOption } from "@/components/ui/combobox";
 
 export function FormCriar() {
@@ -16,16 +16,19 @@ export function FormCriar() {
 
     const [ statusList, setStatusList ] = useState<Array<any>>([]);
 
-    //const [ error, setError ] = useState<string | null>(null); 
+    const [ error, setError ] = useState<string | null>(null); 
 
     useEffect(() => {
         fetch("https://gerenciadorbackend.onrender.com/status")
         .then(response => {
             if (response.ok)
                 return response.json();
+            else
+                setError("Não foi possível recuperar os status do servidor. Tente novamente mais tarde.");
         })
         .then(json => {
-            setStatusList(json);
+            if(json)
+                setStatusList(json);
         });
     }, []);
 
@@ -41,6 +44,9 @@ export function FormCriar() {
         criarTarefa(novaTarefa).then(response => {
             if (response) {
                 push("/");
+            }
+            else {
+                setError("Insira apenas valores validos nos campos abaixo (Incluindo o status)!");
             }
         });
     }
@@ -72,6 +78,9 @@ export function FormCriar() {
                         }
                     </Combobox>
                 </div>
+                <div className="formItem red">
+                    {error}
+                </div>
                 <div className="formItem">
                     <button className="buttonConfirmar">Criar</button>
                 </div>
@@ -89,7 +98,7 @@ export function FormAlterar({ value } : Readonly<{ value: string }>) {
 
     const [ statusList, setStatusList ] = useState<Array<any>>([]);
 
-    //const [ error, setError ] = useState<string | null>(null); 
+    const [ error, setError ] = useState<string | null>(null); 
 
     useEffect(() => {
         fetch(`https://gerenciadorbackend.onrender.com/tarefa/${value}`)
@@ -98,22 +107,26 @@ export function FormAlterar({ value } : Readonly<{ value: string }>) {
                 return response.json();
             }
             else {
-                // bagulhar o bglh
+                setError("Não foi possível receber as informações da tarefa. Volte a tela inicial!");
             }
         })
         .then(json => {
-            setTitulo(json[0].titulo);
-            setDescricao(json[0].descricao);
-            setStatus(json[0].status);
+            if(json && json[0])
+                setTitulo(json[0].titulo);
+                setDescricao(json[0].descricao);
+                setStatus(json[0].status);
         });
 
         fetch("https://gerenciadorbackend.onrender.com/status")
         .then(response => {
             if (response.ok)
                 return response.json();
+            else
+                setError("Não foi possível recuperar os status do servidor. Tente novamente mais tarde.");
         })
         .then(json => {
-            setStatusList(json);
+            if(json)
+                setStatusList(json);
         });
     }, []);
 
@@ -132,6 +145,9 @@ export function FormAlterar({ value } : Readonly<{ value: string }>) {
             if (response) {
                 push("/");
             }
+            else {
+                setError("Insira apenas valores validos nos campos abaixo (Incluindo o status)!");
+            }
         });
     }
 
@@ -140,6 +156,9 @@ export function FormAlterar({ value } : Readonly<{ value: string }>) {
         .then(response => {
             if(response) {
                 push("/");
+            }
+            else {
+                setError("Não foi possível apagar a Tarefa.");
             }
         });
     }
@@ -170,6 +189,9 @@ export function FormAlterar({ value } : Readonly<{ value: string }>) {
                             )
                         }
                     </Combobox>
+                </div>
+                <div className="formItem red">
+                    {error}
                 </div>
                 <div className="formItem">
                     <button className="buttonConfirmar">Atualizar</button>
