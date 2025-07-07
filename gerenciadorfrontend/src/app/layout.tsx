@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Martian_Mono } from "next/font/google";
 import "./globals.css";
 
-import LogoText from "@/components/logoText";
-import HeaderChange from "@/components/headerChange";
+import Logo from "@/components/ui-layout/logo";
+import ColorModeHeader from "@/components/ui-layout/colorModeHeader";
+import { ThemeProvider } from "next-themes";
 
 const martianMono = Martian_Mono({
   variable: "--font-martian-mono",
@@ -23,13 +24,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body className={`${martianMono.variable}`}>
-        <HeaderChange/>
-        <main className="content">
-          <LogoText className="logo"/>
-          {children}
-        </main>
+        <ThemeProvider>
+          <ColorModeHeader/>
+          <div className="content">
+            <Logo className="logo text-center"/>
+
+            { children }
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

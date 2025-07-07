@@ -1,3 +1,4 @@
+import { FormAlterar } from "@/components/form";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -14,8 +15,10 @@ export default async function PageTarefa({ params } : { params: Promise<{ id: st
     }
 
     return (
-        <div>
-            { id }
+        <div className="mainForm">
+            <div className="card">
+                <FormAlterar value={id}/>
+            </div>
         </div>
     );
 }

@@ -1,6 +1,5 @@
 'use client';
 
-import { deletarTarefa } from "@/actions/formularioActions";
 import Link from "next/link";
 import { useState } from "react";
 

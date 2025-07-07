@@ -1,7 +1,10 @@
-export default async function PageNotFound() {
+import Link from "next/link";
+
+export default function PageNotFound() {
     return (
         <div>
-            Post Não Encontrado :(
+            <h2>Tarefa Não Pode Ser Encontrada :(</h2>
+            <Link href="/">Voltar Ao Início</Link>
         </div>
     );
 }
