@@ -56,3 +56,7 @@ GET /tarefa/:id
 | `id`        | `int`      | **Obrigatório**. Id da tarefa                                         |
 
 ## Prints e vídeos da aplicação em funcionamento
+![Captura de tela de 2025-07-07 21-19-11](https://github.com/user-attachments/assets/0bf7cafe-9af2-4e40-ab0d-f5651e5f6115)
+![Captura de tela de 2025-07-07 21-18-54](https://github.com/user-attachments/assets/d314240b-27d4-49a9-bc6a-2ace99554fd4)
+![Captura de tela de 2025-07-07 21-18-48](https://github.com/user-attachments/assets/2829a8c1-c706-444e-9dc2-424d3a7bfecf)
+![Captura de tela de 2025-07-07 21-18-44](https://github.com/user-attachments/assets/0e8c6697-aee4-4262-9597-8d10115b53a6)
