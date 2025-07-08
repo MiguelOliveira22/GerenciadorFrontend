@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Tarefa from "@/components/ui/tarefa";
 import { useEffect, useState } from "react";
-import styles from "./page.module.css";
 
 export default function Home() {
   const [ page, setPage ] = useState(0);
