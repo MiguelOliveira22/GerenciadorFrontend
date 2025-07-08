@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GerenciadorFrontend
+Projeto Entrevista
 
-## Getting Started
+## Como rodar o projeto:
 
-First, run the development server:
-
+Para começar, abra a pasta app do projeto a partir de sua raiz com o comando abaixo:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd gerenciadorfrontend
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Depois instale as dependências abaixo por meio do NPM ou seu gerenciador de pacotes de preferência:
+- Next
+- React
+- ReactDOM
+- Next-Themes
+- Matherial-Symbols
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+O script usado para instalar todas elas é esse:
+```bash
+npm i
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Depois, para poder iniciar a aplicação, execute o comando específico para construir e rodá-la...
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+Ou chame o ambiente de desenvolvimento para testar as capacidades do projeto:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Endpoints da Aplicação
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### Pagina Inicial Com Tarefas
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```http
+GET /
+```
 
-## Deploy on Vercel
+#### Pagina Para Criação De Tarefas
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```http
+GET /criar
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### Pagina Para Atualização, Deleção e Alteração De Status De Uma Tarefa
+
+```http
+GET /tarefa/:id
+```
+
+| Parâmetro   | Tipo       | Descrição                                                             |
+| :---------- | :--------- | :-------------------------------------------------------------------- |
+| `id`        | `int`      | **Obrigatório**. Id da tarefa                                         |
+
+## Prints e vídeos da aplicação em funcionamento
